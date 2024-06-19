@@ -2,9 +2,12 @@ package com.utp.flashcard.ui.theme
 
 import androidx.compose.material3.Typography
 import androidx.compose.ui.text.TextStyle
+import androidx.compose.ui.text.font.Font
 import androidx.compose.ui.text.font.FontFamily
+import androidx.compose.ui.text.font.FontStyle
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.unit.sp
+import com.utp.flashcard.R
 
 // Set of Material typography styles to start with
 val Typography = Typography(
@@ -14,8 +17,7 @@ val Typography = Typography(
         fontSize = 16.sp,
         lineHeight = 24.sp,
         letterSpacing = 0.5.sp
-    )
-    /* Other default text styles to override
+    )/* Other default text styles to override
     titleLarge = TextStyle(
         fontFamily = FontFamily.Default,
         fontWeight = FontWeight.Normal,
@@ -32,3 +34,13 @@ val Typography = Typography(
     )
     */
 )
+
+
+val OpenSansFamily = FontFamily(
+    Font(R.font.opensans_condensed_light, FontWeight.Light),
+    Font(R.font.openasans_condensed_regular, FontWeight.Normal),
+    Font(R.font.opensans_condensed_italic, FontWeight.Normal, FontStyle.Italic),
+    Font(R.font.opensans_condensed_medium, FontWeight.Medium),
+    Font(R.font.opensans_condensed_bold, FontWeight.Bold)
+)
+
