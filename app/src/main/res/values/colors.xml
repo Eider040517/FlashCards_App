@@ -7,7 +7,15 @@
     <color name="teal_200">#FF03DAC5</color>
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
+
+    //Color Card View
     <color name="background_game">#FF6297FF</color>
+
     <color name="background_linearProgress">#66FFFFFF</color>
     <color name="color_linearProgress"> #FFFFE89F</color>
+
+    <color name="font_color_grey"> #3C000000</color>
+    <color name="background_btn_game">#FFF1F4FB</color>
+    <color name="font_color_BTN_YES">#FF0B9163</color>
+    <color name="font_color_BTN_NO">#FFD32B22</color>
 </resources>
