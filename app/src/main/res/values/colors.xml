@@ -8,4 +8,6 @@
     <color name="teal_700">#FF018786</color>
     <color name="black">#FF000000</color>
     <color name="background_game">#FF6297FF</color>
+    <color name="background_linearProgress">#66FFFFFF</color>
+    <color name="color_linearProgress"> #FFFFE89F</color>
 </resources>
