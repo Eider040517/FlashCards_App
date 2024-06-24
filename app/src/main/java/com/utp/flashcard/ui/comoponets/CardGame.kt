@@ -49,7 +49,6 @@ fun CardGameView(
 }
 
 
-
 @Composable
 fun HeaderCardGame() {
     Row(
