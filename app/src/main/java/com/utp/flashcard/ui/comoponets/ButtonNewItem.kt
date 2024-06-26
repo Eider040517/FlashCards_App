@@ -28,7 +28,7 @@ fun ButtonNewItem(){
     ElevatedCard(
         onClick = { /*TODO*/ },
         colors = CardDefaults.elevatedCardColors(
-            containerColor = colorResource(id = R.color.white)),
+            containerColor = colorResource(id = R.color.background_app_ligth)),
         modifier = Modifier
             .size(width = 352.dp, height = 70.dp),
     ) {

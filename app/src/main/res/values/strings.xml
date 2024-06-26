@@ -3,4 +3,5 @@
     <string name="pregunta_card">Pregunta</string>
     <string name="text_btn_NO_game">Necesito estudiar</string>
     <string name="text_btn_YES_game">Me la sé</string>
+    <string name="jugar">Jugar</string>
 </resources>

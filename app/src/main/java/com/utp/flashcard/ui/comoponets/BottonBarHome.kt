@@ -21,7 +21,7 @@ fun BottonBarHome(){
       modifier = Modifier
           .fillMaxWidth()
           .fillMaxHeight()
-          .background(colorResource(id = R.color.white)),
+          .background(colorResource(id = R.color.background_app_ligth)),
        horizontalArrangement = Arrangement.SpaceAround,
        verticalAlignment = Alignment.CenterVertically
    ) {

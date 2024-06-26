@@ -1,6 +1,6 @@
 @file:OptIn(ExperimentalMaterial3Api::class)
 
-package com.utp.flashcard.ui.theme.screens
+package com.utp.flashcard.ui.screens
 
 import com.utp.flashcard.ui.comoponets.Card
 import com.utp.flashcard.ui.comoponets.BottonBarHome
@@ -30,14 +30,14 @@ fun HomeScreen() {
             TopAppBar(
                 modifier = Modifier.padding(20.dp),
                 colors = topAppBarColors(
-                    containerColor = colorResource(R.color.white),
+                    containerColor = colorResource(R.color.background_app_ligth),
                     titleContentColor = colorResource(R.color.black)
                 ),
                 title = { TitleHeader() }
             )
         }, bottomBar = {
             BottomAppBar(
-                containerColor = colorResource(id = R.color.white),
+                containerColor = colorResource(id = R.color.background_app_ligth),
             ) {
                 BottonBarHome()
             }

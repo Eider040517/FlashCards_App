@@ -33,7 +33,7 @@ fun CardGameView(
         modifier = Modifier
             .width(352.dp)
             .height(600.dp)
-            .background(colorResource(id = R.color.white)),
+            .background(colorResource(id = R.color.background_app_ligth)),
     ) {
         Column(
             modifier = Modifier.fillMaxSize(),
