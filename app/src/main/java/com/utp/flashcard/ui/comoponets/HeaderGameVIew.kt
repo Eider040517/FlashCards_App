@@ -42,7 +42,7 @@ fun TitleCardGame(title :String ) {
         text = title,
         fontSize = 20.sp,
         fontWeight = FontWeight.Bold,
-        color = colorResource(id = R.color.white)
+        color = colorResource(id = R.color.color_font_white)
     )
 }
 
@@ -51,7 +51,7 @@ fun ArrowBack() {
     Box {
         IconButton(onClick = { /*TODO*/ }) {
             Icon(
-                tint = colorResource(id = R.color.white),
+                tint = colorResource(id = R.color.color_font_white),
                 painter = painterResource(id = R.drawable.icon_arrow_back),
                 contentDescription = "Icon arrow back",
 

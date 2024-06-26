@@ -31,7 +31,7 @@ import com.utp.flashcard.R
 fun Card(){
     ElevatedCard(
         colors = CardDefaults.elevatedCardColors(
-            containerColor = colorResource(id = R.color.white),
+            containerColor = colorResource(id = R.color.background_app_ligth),
         ),
         elevation = CardDefaults.cardElevation(
             defaultElevation = 4.dp
