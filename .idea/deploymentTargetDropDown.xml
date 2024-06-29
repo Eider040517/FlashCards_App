@@ -2,11 +2,43 @@
 <project version="4">
   <component name="deploymentTargetDropDown">
     <value>
+      <entry key="GeetingPreview">
+        <State />
+      </entry>
       <entry key="PreviewHeaderGameView">
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="SERIAL_NUMBER" />
+                  <value value="70b0048f" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-06-29T00:37:03.308242800Z" />
+        </State>
+      </entry>
+      <entry key="PreviewNewCard">
         <State />
       </entry>
       <entry key="app">
-        <State />
+        <State>
+          <runningDeviceTargetSelectedWithDropDown>
+            <Target>
+              <type value="RUNNING_DEVICE_TARGET" />
+              <deviceKey>
+                <Key>
+                  <type value="SERIAL_NUMBER" />
+                  <value value="70b0048f" />
+                </Key>
+              </deviceKey>
+            </Target>
+          </runningDeviceTargetSelectedWithDropDown>
+          <timeTargetWasSelectedWithDropDown value="2024-06-29T00:40:13.653363100Z" />
+        </State>
       </entry>
     </value>
   </component>
