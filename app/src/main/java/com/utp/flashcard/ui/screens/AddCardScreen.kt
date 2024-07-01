@@ -5,6 +5,7 @@ package com.utp.flashcard.ui.screens
 import androidx.compose.foundation.horizontalScroll
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.foundation.layout.Row
 import androidx.compose.foundation.layout.Spacer
 import androidx.compose.foundation.layout.fillMaxSize
@@ -36,6 +37,7 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.utp.flashcard.R
+import com.utp.flashcard.ui.comoponets.NewCard
 
 @Preview
 @Composable
@@ -44,20 +46,28 @@ fun AddCardScreen() {
     Scaffold(
         topBar = { TopBar(title) },
         bottomBar = { BottonBar() },
-
         ) { innerPadding ->
-        Column(
-            modifier = Modifier
-                .padding(innerPadding),
-            verticalArrangement = Arrangement.spacedBy(16.dp),
-        ) {
-        }
+        ConenteCards(innerPadding)
     }
 
 }
 
 @Composable
+fun ConenteCards(innerPadding : PaddingValues){
+    Column(
+        modifier = Modifier
+            .padding(innerPadding)
+            .fillMaxSize(),
+        verticalArrangement = Arrangement.SpaceEvenly,
+        horizontalAlignment = Alignment.CenterHorizontally
+    ) {
+        NewCard(tipo = "Pregunta")
+        NewCard(tipo = "Pregunta")
+    }
+}
 
+
+@Composable
 fun TopBar(title: String) {
     TopAppBar(
         modifier = Modifier.padding(start = 10.dp),
@@ -65,9 +75,6 @@ fun TopBar(title: String) {
             containerColor = colorResource(id = R.color.background_app_ligth),
             titleContentColor = colorResource(id = R.color.black),
         ),
-        title = {
-            Text(text = title)
-        },
         navigationIcon = {
             IconButton(onClick = { /*TODO*/ }) {
                 Icon(
@@ -75,9 +82,16 @@ fun TopBar(title: String) {
                     contentDescription = "Icon Arrow back"
                 )
             }
-        }
+        },
+        title = {
+            Text(text = title)
+        },
+
+
     )
 }
+
+
 
 @Composable
 fun BottonBar() {
