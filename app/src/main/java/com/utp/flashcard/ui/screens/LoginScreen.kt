@@ -21,11 +21,12 @@ import androidx.compose.ui.text.input.PasswordVisualTransformation
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.utp.flashcard.R
 
 
 @Composable
-fun LoginScreen() {
+fun LoginScreen(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxSize()
@@ -33,12 +34,12 @@ fun LoginScreen() {
         verticalArrangement = Arrangement.Center,
     ) {
 
-        FormLogin()
+        FormLogin(navController)
     }
 }
 
 @Composable
-fun FormLogin() {
+fun FormLogin(navController: NavController) {
     Column(
         verticalArrangement = Arrangement.spacedBy(40.dp)
     )
@@ -94,7 +95,7 @@ fun FormLogin() {
                 )
                 PasswordTextField()
             }
-            ButtonSign()
+            ButtonSign(navController)
         }
 
 
@@ -128,13 +129,15 @@ fun PasswordTextField() {
 }
 
 @Composable
-fun ButtonSign() {
+fun ButtonSign(navController: NavController) {
     Button(
         modifier = Modifier
             .width(360.dp)
             .height(60.dp),
         colors = ButtonDefaults.buttonColors(colorResource(id = R.color.black)),
-        onClick = { /*TODO*/ }
+        onClick = {
+            navController.navigate("home")
+        }
     ) {
         Text(
             text = "Iniciar Secion",
@@ -145,9 +148,3 @@ fun ButtonSign() {
 
 }
 
-@Preview
-@Composable
-
-fun PreviewLoginScreen() {
-    LoginScreen()
-}

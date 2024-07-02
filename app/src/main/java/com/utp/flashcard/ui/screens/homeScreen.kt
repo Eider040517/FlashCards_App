@@ -22,9 +22,11 @@ import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen() {
+fun HomeScreen(navController: NavController) {
     Scaffold (
         topBar = {
             TopAppBar(
@@ -49,7 +51,7 @@ fun HomeScreen() {
 
         ) {
 
-            BodyContent()
+            BodyContent(navController)
         }
 
     }
@@ -57,7 +59,7 @@ fun HomeScreen() {
 
 
 @Composable
-fun BodyContent() {
+fun BodyContent(navController: NavController) {
     Column(
         modifier = Modifier
             .fillMaxWidth(),
@@ -65,7 +67,7 @@ fun BodyContent() {
         verticalArrangement = Arrangement.Center
 
     ) {
-        ButtonNewItem()
+        ButtonNewItem(navController)
         Card()
         Card()
         Card()
@@ -86,8 +88,3 @@ fun TitleHeader(){
 
 }
 
-@Preview
-@Composable
-fun GeetingPreview(){
-    HomeScreen()
-}

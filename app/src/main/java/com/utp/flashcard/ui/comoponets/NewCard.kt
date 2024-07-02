@@ -33,7 +33,7 @@ import com.utp.flashcard.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun NewCard(tipo: String) {
+fun NewCard() {
     ElevatedCard(
         onClick = { /*TODO*/ },
         modifier = Modifier
@@ -78,6 +78,6 @@ fun TextCarde() {
 @Preview
 @Composable
 fun PreviewNewCard() {
-    NewCard(tipo = "Pregunta")
+    NewCard()
 }
 

@@ -19,14 +19,18 @@ import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.navigation.NavController
 import com.utp.flashcard.R
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
 
-fun ButtonNewItem(){
+fun ButtonNewItem(navController: NavController){
     ElevatedCard(
-        onClick = { /*TODO*/ },
+        onClick = {
+                 //Ejemplo se uso se tiene que cambiar el funciona namiento
+                  navController.navigate("addCard")
+        },
         colors = CardDefaults.elevatedCardColors(
             containerColor = colorResource(id = R.color.background_app_ligth)),
         modifier = Modifier
@@ -48,11 +52,4 @@ fun ButtonNewItem(){
         }
 
     }
-}
-
-@Preview
-@Composable
-
-fun PreviewButtonNewItem(){
-    ButtonNewItem()
 }
