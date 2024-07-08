@@ -13,6 +13,7 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.tooling.preview.Preview
+import androidx.navigation.NavController
 import com.utp.flashcard.R
 
 @Composable
@@ -26,7 +27,8 @@ fun BottonBarHome(){
        verticalAlignment = Alignment.CenterVertically
    ) {
 
-       IconButton(onClick = {}){
+       IconButton(onClick = {
+       }){
            Icon(
                painter = painterResource(id = R.drawable.icon_user),
                contentDescription = "User Icon" )
