@@ -51,11 +51,14 @@ android {
 
 dependencies {
 
+    implementation(libs.androidx.room.common)
     val nav_version = "2.7.7"
+
+    // Otras dependencias necesarias
+    implementation (libs.androidx.core.ktx)
 
     //noinspection UseTomlInstead
     implementation("androidx.navigation:navigation-compose:$nav_version")
-
     implementation(libs.androidx.core.ktx)
     implementation(libs.androidx.lifecycle.runtime.ktx)
     implementation(libs.androidx.activity.compose)
@@ -71,4 +74,8 @@ dependencies {
     androidTestImplementation(libs.androidx.ui.test.junit4)
     debugImplementation(libs.androidx.ui.tooling)
     debugImplementation(libs.androidx.ui.test.manifest)
+
+    implementation("androidx.room:room-runtime:2.6.1")
+    annotationProcessor("androidx.room:room-compiler:2.6.1")
+
 }
