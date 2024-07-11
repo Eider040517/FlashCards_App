@@ -6,7 +6,7 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.Index;
 import androidx.room.PrimaryKey;
-//Empy Card
+
 @Entity(tableName = "card",
         foreignKeys = @ForeignKey(entity = Pack.class,
                 parentColumns = "id",
