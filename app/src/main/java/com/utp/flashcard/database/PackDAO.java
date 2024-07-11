@@ -5,7 +5,7 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-import com.utp.flashcard.entities.Pack;
+import com.utp.flashcard.database.entities.Pack;
 import java.util.List;
 
 @Dao
@@ -19,10 +19,10 @@ public interface PackDAO {
     @Delete
     void delete(Pack pack);
 
-    @Query("SELECT * FROM Pack")
+    @Query("SELECT * FROM packs")
     List<Pack> getAllPacks();
 
-    @Query("SELECT * FROM Pack WHERE id = :packId")
+    @Query("SELECT * FROM packs WHERE id = :packId")
     Pack getPackById(int packId);
 
 }

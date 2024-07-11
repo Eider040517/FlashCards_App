@@ -1,4 +1,4 @@
-package com.utp.flashcard.entities;
+package com.utp.flashcard.database.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;
@@ -17,16 +17,13 @@ public class User {
     public String name;
 
     @NonNull
-    @ColumnInfo(name = "nick_name")
-    public String nick_name;
+    @ColumnInfo(name = "nickName")
+    public String nickName;
 
-    @NonNull
-    @ColumnInfo(name = "created_at")
-    public Date created_at;
 
-    public User(@NonNull String name, @NonNull String nick_name, @NonNull Date created_at) {
+
+    public User(@NonNull String name, @NonNull String nickName) {
         this.name = name;
-        this.nick_name = nick_name;
-        this.created_at = created_at;
+        this.nickName = nickName;
     }
 }

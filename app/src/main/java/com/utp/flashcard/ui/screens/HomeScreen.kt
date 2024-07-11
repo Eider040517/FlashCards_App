@@ -43,14 +43,14 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.runtime.*
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.utp.flashcard.ui.ViewModel.CardPack
-import com.utp.flashcard.ui.ViewModel.HomeViewModel
+import com.utp.flashcard.ViewModel.CardPack
+import com.utp.flashcard.ViewModel.HomeViewModel
 import com.utp.flashcard.ui.comoponets.Card
 
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun HomeScreen(navController: NavController) {
+fun HomeScreen(navController: NavController , userID : Int) {
 
     val homeViewModel: HomeViewModel = viewModel()
 
@@ -58,7 +58,7 @@ fun HomeScreen(navController: NavController) {
         TopAppBar(modifier = Modifier.padding(20.dp), colors = topAppBarColors(
             containerColor = colorResource(R.color.background_app_ligth),
             titleContentColor = colorResource(R.color.black)
-        ), title = { TitleHeader() })
+        ), title = { TitleHeader(userID) })
     }, bottomBar = {
         BottomAppBar(
             containerColor = colorResource(id = R.color.background_app_ligth),
@@ -191,6 +191,6 @@ fun ContentModalBotton(showModalBottonSheet: () -> Unit, viewModel: HomeViewMode
 }
 
 @Composable
-fun TitleHeader() {
-    Text(text = "Mis cartas", fontSize = 35.sp)
+fun TitleHeader(userID: Int) {
+    Text(text = userID.toString(), fontSize = 35.sp)
 }

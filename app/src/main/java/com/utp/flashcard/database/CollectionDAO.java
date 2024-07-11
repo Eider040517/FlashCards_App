@@ -5,15 +5,15 @@ import androidx.room.Delete;
 import androidx.room.Insert;
 import androidx.room.Query;
 import androidx.room.Update;
-import com.utp.flashcard.entities.Collection;
+import com.utp.flashcard.database.entities.Collection;
 import java.util.List;
 
 @Dao
 public interface CollectionDAO {
-    @Query("SELECT * FROM Collection")
+    @Query("SELECT * FROM collections")
     List<Collection> getAllCollections();
 
-    @Query("SELECT * FROM Collection WHERE id = :collectionId")
+    @Query("SELECT * FROM collections WHERE id = :collectionId")
     Collection getCollectionById(int collectionId);
 
     @Insert

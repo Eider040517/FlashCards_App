@@ -1,4 +1,4 @@
-package com.utp.flashcard.entities;
+package com.utp.flashcard.database.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.ColumnInfo;

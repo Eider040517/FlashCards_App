@@ -1,4 +1,4 @@
-package com.utp.flashcard.entities;
+package com.utp.flashcard.database.entities;
 
 import androidx.annotation.NonNull;
 import androidx.room.Entity;
@@ -6,8 +6,6 @@ import androidx.room.Entity;
 import androidx.room.ForeignKey;
 import androidx.room.PrimaryKey;
 import androidx.room.ColumnInfo;
-
-import java.util.Date;
 
 @Entity(tableName = "packs",
         foreignKeys = @ForeignKey(entity = Collection.class,
@@ -26,13 +24,10 @@ public class Pack {
     @ColumnInfo(name = "id_collection")
     public int id_collection;
 
-    @NonNull
-    @ColumnInfo(name = "created_at")
-    public Date created_at;
 
-    public Pack(@NonNull String title, int id_collection, @NonNull Date created_at) {
+
+    public Pack(@NonNull String title, int id_collection ) {
         this.title = title;
         this.id_collection = id_collection;
-        this.created_at = created_at;
     }
 }

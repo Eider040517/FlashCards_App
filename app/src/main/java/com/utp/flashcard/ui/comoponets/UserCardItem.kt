@@ -27,7 +27,7 @@ import androidx.compose.ui.unit.sp
 import com.utp.flashcard.R
 import com.utp.flashcard.R.*
 import com.utp.flashcard.R.color.*
-import com.utp.flashcard.ui.ViewModel.CardPack
+import com.utp.flashcard.ViewModel.CardPack
 
 @Composable
 fun Card(pack: CardPack) {

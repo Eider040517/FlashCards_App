@@ -1,7 +1,8 @@
-package com.utp.flashcard.ui.ViewModel
+package com.utp.flashcard.ViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import com.utp.flashcard.database.PackDAO
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.launch
@@ -12,7 +13,7 @@ data class CardPack(
     val id_colletion: Int
 )
 
-class HomeViewModel : ViewModel() {
+class HomeViewModel() : ViewModel() {
 
 
 
@@ -24,21 +25,12 @@ class HomeViewModel : ViewModel() {
     }
 
     private fun loadPacks() {
-        viewModelScope.launch {
-            _packs.value = listOf(
-                CardPack(1, "Pack 1", 1 ),
-                CardPack(2, "Pack 2", 2 )
-            )
-        }
+
     }
 
     //ALMACENAMIENTO EN CACH
     fun addNewCar(newPack : CardPack){
-        viewModelScope.launch {
-            val updatedPacks = _packs.value.toMutableList()
-            updatedPacks.add(newPack)
-            _packs.value = updatedPacks
-        }
+
     }
 
     // Eliminar el Pack

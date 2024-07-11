@@ -21,8 +21,9 @@ fun NavGraph(navController: NavHostController) {
         composable("login") {
             LoginScreen(navController)
         }
-        composable("home") {
-            HomeScreen(navController)
+        composable("home/{userId}") { backStackEntry ->
+            val userId = backStackEntry.arguments?.getString("userId")?.toInt() ?: 0
+            HomeScreen(navController, userId)
         }
     }
 }

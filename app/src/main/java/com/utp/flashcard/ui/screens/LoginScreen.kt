@@ -8,38 +8,51 @@ import androidx.compose.material3.Icon
 import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.LaunchedEffect
+import androidx.compose.runtime.collectAsState
 import androidx.compose.runtime.getValue
-import androidx.compose.runtime.mutableStateOf
-import androidx.compose.runtime.saveable.rememberSaveable
-import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.painterResource
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.PasswordVisualTransformation
-import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.utp.flashcard.R
+import com.utp.flashcard.ViewModel.LoginViewModel
 
 
 @Composable
 fun LoginScreen(navController: NavController) {
+
+    val viewModel : LoginViewModel = viewModel()
+
     Column(
         modifier = Modifier
             .fillMaxSize()
             .background(color = colorResource(R.color.color_font_white)),
         verticalArrangement = Arrangement.Center,
     ) {
-
-        FormLogin(navController)
+        FormLogin(navController, viewModel)
     }
 }
 
 @Composable
-fun FormLogin(navController: NavController) {
+fun FormLogin(navController: NavController,viewModel: LoginViewModel) {
+
+    val name by viewModel.name.collectAsState()
+    val nickName by viewModel.nickName.collectAsState()
+    val loggedInUserId by viewModel.loggedInUserId.collectAsState()
+
+    LaunchedEffect(loggedInUserId) {
+        loggedInUserId?.let { userId ->
+            navController.navigate("home/$userId")
+        }
+    }
+
     Column(
         verticalArrangement = Arrangement.spacedBy(40.dp)
     )
@@ -82,7 +95,7 @@ fun FormLogin(navController: NavController) {
                     text = "Usuario",
                     fontSize = 18.sp
                 )
-                UserTextField()
+                UserTextField(name , onValueChange = { viewModel.updateName(it)})
             }
             Column(
                 Modifier.fillMaxWidth(),
@@ -93,9 +106,9 @@ fun FormLogin(navController: NavController) {
                     text = "Contraseña",
                     fontSize = 18.sp
                 )
-                PasswordTextField()
+                PasswordTextField(nickName, onValueChange = { viewModel.updateNickName(it)})
             }
-            ButtonSign(navController)
+            ButtonSign{viewModel.loginUser()}
         }
 
 
@@ -103,11 +116,10 @@ fun FormLogin(navController: NavController) {
 }
 
 @Composable
-fun UserTextField() {
-    var input by rememberSaveable { mutableStateOf("") }
+fun UserTextField( name: String, onValueChange : (String) -> Unit) {
     OutlinedTextField(
-        value = input,
-        onValueChange = { input = it },
+        value = name,
+        onValueChange = onValueChange,
         Modifier
             .width(360.dp)
             .height(60.dp),
@@ -115,12 +127,11 @@ fun UserTextField() {
 }
 
 @Composable
-fun PasswordTextField() {
-    var password by rememberSaveable { mutableStateOf("") }
+fun PasswordTextField(nickName: String, onValueChange : (String) -> Unit) {
 
     OutlinedTextField(
-        value = password,
-        onValueChange = { password = it },
+        value = nickName,
+        onValueChange = onValueChange,
         Modifier
             .width(360.dp)
             .height(60.dp),
@@ -129,15 +140,13 @@ fun PasswordTextField() {
 }
 
 @Composable
-fun ButtonSign(navController: NavController) {
+fun ButtonSign(onClick : () -> Unit) {
     Button(
         modifier = Modifier
             .width(360.dp)
             .height(60.dp),
         colors = ButtonDefaults.buttonColors(colorResource(id = R.color.black)),
-        onClick = {
-            navController.navigate("home")
-        }
+        onClick = onClick
     ) {
         Text(
             text = "Iniciar Secion",
