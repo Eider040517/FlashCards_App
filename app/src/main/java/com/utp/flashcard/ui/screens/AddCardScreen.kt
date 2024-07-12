@@ -59,18 +59,23 @@ fun AddCardScreen(navController: NavController,viewModel: ShareViewModel, packId
                 viewModel.addCard(newCard)
             }
         }
-
     ) { innerPadding ->
-        LazyRow(
-            modifier = Modifier
-                .padding(innerPadding)
-                .padding(start = 30.dp, end = 30.dp),
-            horizontalArrangement = Arrangement.spacedBy(20.dp)
+        Column(
+            Modifier.padding(innerPadding)
         ) {
-            items(cards) { card ->
-                ConenteCard(card, viewModel)
+            LazyRow(
+                modifier = Modifier
+                    .padding(innerPadding)
+                    .padding(start = 30.dp, end = 30.dp),
+                horizontalArrangement = Arrangement.spacedBy(20.dp)
+            ) {
+                items(cards) { card ->
+                    ConenteCard(card, viewModel)
+                }
             }
+            Text("Current cards: $cards")
         }
+
     }
 
 }

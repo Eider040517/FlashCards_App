@@ -39,4 +39,6 @@ public class Card {
         this.created_at = created_at;
     }
 
+
+
 }

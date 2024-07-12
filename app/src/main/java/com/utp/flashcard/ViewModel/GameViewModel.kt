@@ -1,6 +1,7 @@
 
 package com.utp.flashcard.ViewModel
 
+import android.util.Log
 import androidx.lifecycle.ViewModel
 import com.utp.flashcard.database.entities.Card
 import kotlinx.coroutines.flow.MutableStateFlow
@@ -20,12 +21,13 @@ class GameViewModel : ViewModel() {
 
     init {
         // Configurar una lista de cartas de ejemplo al iniciar el ViewModel
-        setExampleCards()
+        //setExampleCards()
     }
 
     fun setCards(cards: List<Card>) {
         _cards.value = cards
         _currentCardIndex.value = 0
+        Log.d("GameViewModel", "Cards set: ${cards.map { it.id }}")
     }
 
     private fun setExampleCards() {
@@ -62,7 +64,6 @@ class GameViewModel : ViewModel() {
             )
         )
         _cards.value = exampleCards
-        _currentCardIndex.value = 0
     }
 
     fun nextCard() {

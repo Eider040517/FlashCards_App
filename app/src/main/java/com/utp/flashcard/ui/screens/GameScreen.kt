@@ -32,14 +32,12 @@ import com.utp.flashcard.ui.comoponets.LinearProgressGame
 @Composable
 fun GameScreen(navController: NavController, shareViewModel: ShareViewModel) {
     val gameViewModel: GameViewModel = viewModel()
-    val cards by gameViewModel.cards.collectAsState()
+    val cards by shareViewModel.cards.collectAsState()
     val progress by remember { derivedStateOf { gameViewModel.getProgress() } }
-    /**
 
     LaunchedEffect(cards) {
         gameViewModel.setCards(cards)
     }
-    **/
 
     val currentCardIndex by gameViewModel.currentCardIndex.collectAsState()
     val currentCards by gameViewModel.cards.collectAsState()
