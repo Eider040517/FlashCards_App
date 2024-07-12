@@ -11,7 +11,7 @@ import java.util.List;
 @Dao
 public interface PackDAO {
     @Insert
-    void insert(Pack pack);
+    long insert(Pack pack);
 
     @Update
     void update(Pack pack);

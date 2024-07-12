@@ -20,10 +20,14 @@ public class User {
     @ColumnInfo(name = "nickName")
     public String nickName;
 
+    @NonNull
+    @ColumnInfo(name = "created_at")
+    public String created_at;
 
-
-    public User(@NonNull String name, @NonNull String nickName) {
+    public User(@NonNull String name, @NonNull String nickName, @NonNull String created_at) {
         this.name = name;
         this.nickName = nickName;
+        this.created_at = created_at;
     }
 }
+

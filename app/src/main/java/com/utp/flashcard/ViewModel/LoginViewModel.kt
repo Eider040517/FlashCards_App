@@ -2,11 +2,14 @@ package com.utp.flashcard.ViewModel
 
 import androidx.lifecycle.ViewModel
 import androidx.lifecycle.viewModelScope
+import androidx.room.Room
+import com.utp.flashcard.database.AppDatabase
 import com.utp.flashcard.database.entities.User
 import kotlinx.coroutines.flow.MutableStateFlow
 import kotlinx.coroutines.flow.StateFlow
 
 class LoginViewModel : ViewModel() {
+
     private val _name = MutableStateFlow("")
     val name: StateFlow<String> = _name
 
@@ -29,7 +32,8 @@ class LoginViewModel : ViewModel() {
     fun loginUser() {
         val user = User(
             _name.value,
-            _nickName.value
+            _nickName.value,
+            "000"
         )
         _loggedInUserId.value = user.id
     }

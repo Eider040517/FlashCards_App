@@ -12,15 +12,10 @@ import androidx.compose.ui.unit.dp
 import com.utp.flashcard.R
 
 @Composable
-fun LineaProgressGame() {
-    LinearProgress()
-}
-
-@Composable
-fun LinearProgress() {
+fun LinearProgressGame(progress : Float) {
     Column {
         LinearProgressIndicator(
-            progress = 0.1f,
+            progress = progress,
             modifier = Modifier
                 .width(352.dp)
                 .height(10.dp),
@@ -28,11 +23,4 @@ fun LinearProgress() {
             trackColor = colorResource(id = R.color.background_linearProgress)
         )
     }
-}
-
-@Preview
-@Composable
-
-fun PreviewLineaProgressGame() {
-    LineaProgressGame()
 }

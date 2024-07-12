@@ -20,14 +20,18 @@ public class Pack {
     @ColumnInfo(name = "title")
     public String title;
 
-    @NonNull
     @ColumnInfo(name = "id_collection")
     public int id_collection;
 
+    @NonNull
+    @ColumnInfo(name = "created_at")
+    public String created_at;
 
 
-    public Pack(@NonNull String title, int id_collection ) {
+    public Pack(@NonNull String title, int id_collection, @NonNull String created_at) {
         this.title = title;
         this.id_collection = id_collection;
+        this.created_at = created_at;
+
     }
 }

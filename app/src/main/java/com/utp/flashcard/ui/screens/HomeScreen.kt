@@ -43,8 +43,8 @@ import androidx.compose.ui.unit.sp
 import androidx.navigation.NavController
 import androidx.compose.runtime.*
 import androidx.lifecycle.viewmodel.compose.viewModel
-import com.utp.flashcard.ViewModel.CardPack
 import com.utp.flashcard.ViewModel.HomeViewModel
+import com.utp.flashcard.database.entities.Pack
 import com.utp.flashcard.ui.comoponets.Card
 
 
@@ -72,7 +72,7 @@ fun HomeScreen(navController: NavController , userID : Int) {
 
             ) {
 
-            BodyContent(homeViewModel)
+            BodyContent(homeViewModel, navController)
         }
 
     }
@@ -81,7 +81,7 @@ fun HomeScreen(navController: NavController , userID : Int) {
 
 @OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun BodyContent(viewModel: HomeViewModel) {
+fun BodyContent(viewModel: HomeViewModel, navController: NavController) {
 
     val packs by viewModel.pack.collectAsState()
     var showBottomSheet by remember { mutableStateOf(false) }
@@ -95,7 +95,7 @@ fun BodyContent(viewModel: HomeViewModel) {
 
         LazyColumn {
             items(packs) { pack ->
-                Card(pack) // Composable personalizado para mostrar cada pack
+                Card(pack) { navController.navigate("addCard/123") } // Composable personalizado para mostrar cada pack
             }
         }
 
@@ -120,7 +120,7 @@ fun BodyContent(viewModel: HomeViewModel) {
 @Composable
 fun ContentModalBotton(showModalBottonSheet: () -> Unit, viewModel: HomeViewModel) {
 
-    var input by remember {
+    var titlePack by remember {
         mutableStateOf("")
     }
 
@@ -163,8 +163,8 @@ fun ContentModalBotton(showModalBottonSheet: () -> Unit, viewModel: HomeViewMode
                 modifier = Modifier
                     .width(350.dp)
                     .height(70.dp),
-                value = input,
-                onValueChange = { input = it }
+                value = titlePack,
+                onValueChange = { titlePack = it }
             )
 
             Button(
@@ -172,7 +172,7 @@ fun ContentModalBotton(showModalBottonSheet: () -> Unit, viewModel: HomeViewMode
                     .width(200.dp)
                     .height(50.dp),
                 onClick = {
-                    viewModel.addNewCar(CardPack(3, input, 1))
+                    viewModel.addNewCar(Pack(titlePack, 1,"00000"))
                     showModalBottonSheet()
                 }) {
                 Text(

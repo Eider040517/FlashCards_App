@@ -1,6 +1,7 @@
 package com.utp.flashcard.ui.comoponets
 
 import androidx.compose.foundation.background
+import androidx.compose.foundation.clickable
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Row
@@ -17,6 +18,7 @@ import androidx.compose.material3.Text
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.graphics.graphicsLayer
 import androidx.compose.ui.res.colorResource
 import androidx.compose.ui.res.stringResource
 import androidx.compose.ui.text.font.FontWeight
@@ -24,24 +26,41 @@ import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import com.utp.flashcard.R
+import com.utp.flashcard.database.entities.Card
 
 @Composable
 fun CardGameView(
+    card: Card, onNext: () -> Unit,
+    onDelet: () -> Unit,
+    rotated: Boolean,
+    onRotate: () -> Unit,
+    rotar: Float,
 ) {
 
     ElevatedCard(
         modifier = Modifier
             .width(352.dp)
             .height(600.dp)
-            .background(colorResource(id = R.color.background_app_ligth)),
-    ) {
-        Column(
-            modifier = Modifier.fillMaxSize(),
-            verticalArrangement = Arrangement.SpaceBetween
+            .background(colorResource(id = R.color.background_app_ligth))
+            .clickable { onRotate() }
+            .graphicsLayer { rotationY = rotar },
+
         ) {
-            HeaderCardGame()
-            TextCard("¿Que es un verbo?")
-            ButtonArea()
+        Column(
+            modifier = Modifier
+                .fillMaxSize()
+                .graphicsLayer { rotationY = rotar},
+            verticalArrangement = Arrangement.SpaceBetween,
+        ) {
+            if (!rotated) {
+                HeaderCardGame("Pregunta")
+                TextCard(card.question)
+            } else {
+                HeaderCardGame("Respuesta")
+                TextCard(card.answer)
+            }
+
+            ButtonArea(onNext, onDelet)
         }
     }
 
@@ -50,14 +69,14 @@ fun CardGameView(
 
 
 @Composable
-fun HeaderCardGame() {
+fun HeaderCardGame(title: String) {
     Row(
         modifier = Modifier
             .padding(top = 20.dp, start = 20.dp)
 
     ) {
         Text(
-            text = stringResource(id = R.string.pregunta_card),
+            text = title,
             fontWeight = FontWeight.Bold,
             fontSize = 16.sp,
             color = colorResource(id = R.color.font_color_grey)
@@ -85,7 +104,7 @@ fun TextCard(text: String) {
 
 @Composable
 
-fun ButtonArea() {
+fun ButtonArea(onNext: () -> Unit, onDelet: () -> Unit) {
 
     val backgroundColorBTN =
         ButtonDefaults.buttonColors(containerColor = colorResource(id = R.color.background_btn_game))
@@ -100,7 +119,7 @@ fun ButtonArea() {
     )
     {
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { onNext() },
             modifier = buttonModifier,
             colors = backgroundColorBTN
 
@@ -112,7 +131,7 @@ fun ButtonArea() {
         }
 
         Button(
-            onClick = { /*TODO*/ },
+            onClick = { onDelet() },
             modifier = buttonModifier,
             colors = backgroundColorBTN
         ) {
@@ -122,11 +141,4 @@ fun ButtonArea() {
             )
         }
     }
-}
-
-@Preview
-@Composable
-
-fun PreviewHeaderCardGame() {
-    CardGameView()
 }

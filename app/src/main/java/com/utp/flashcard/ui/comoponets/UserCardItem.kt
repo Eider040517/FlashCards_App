@@ -12,6 +12,7 @@ import androidx.compose.foundation.layout.size
 import androidx.compose.foundation.shape.CircleShape
 import androidx.compose.material3.CardDefaults
 import androidx.compose.material3.ElevatedCard
+import androidx.compose.material3.ExperimentalMaterial3Api
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
 import androidx.compose.material3.Text
@@ -27,11 +28,13 @@ import androidx.compose.ui.unit.sp
 import com.utp.flashcard.R
 import com.utp.flashcard.R.*
 import com.utp.flashcard.R.color.*
-import com.utp.flashcard.ViewModel.CardPack
+import com.utp.flashcard.database.entities.Pack
 
+@OptIn(ExperimentalMaterial3Api::class)
 @Composable
-fun Card(pack: CardPack) {
+fun Card(pack: Pack,onClick : () -> Unit) {
     ElevatedCard(
+        onClick = onClick,
         colors = CardDefaults.elevatedCardColors(
             containerColor = colorResource(id = background_app_ligth),
         ),
@@ -87,7 +90,7 @@ fun Card(pack: CardPack) {
                     )
                 }
 
-                IconButton(onClick = { /*TODO*/ }) {
+                IconButton(onClick = onClick) {
                     Icon(
                         modifier = Modifier
                             .size(100.dp),

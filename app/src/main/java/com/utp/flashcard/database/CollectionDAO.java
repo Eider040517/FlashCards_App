@@ -17,7 +17,7 @@ public interface CollectionDAO {
     Collection getCollectionById(int collectionId);
 
     @Insert
-    void insert(Collection collection);
+    long insert(Collection collection);
 
     @Update
     void update(Collection collection);

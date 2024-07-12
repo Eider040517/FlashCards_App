@@ -22,6 +22,7 @@ import androidx.compose.ui.unit.sp
 import androidx.lifecycle.viewmodel.compose.viewModel
 import androidx.navigation.NavController
 import com.utp.flashcard.R
+import com.utp.flashcard.ViewModel.ColletionViewModel
 import com.utp.flashcard.ViewModel.LoginViewModel
 
 
@@ -41,14 +42,17 @@ fun LoginScreen(navController: NavController) {
 }
 
 @Composable
-fun FormLogin(navController: NavController,viewModel: LoginViewModel) {
+fun FormLogin(navController: NavController,loginviewModel: LoginViewModel) {
 
-    val name by viewModel.name.collectAsState()
-    val nickName by viewModel.nickName.collectAsState()
-    val loggedInUserId by viewModel.loggedInUserId.collectAsState()
+    val colletionViewModel : ColletionViewModel = viewModel()
+
+    val name by loginviewModel.name.collectAsState()
+    val nickName by loginviewModel.nickName.collectAsState()
+    val loggedInUserId by loginviewModel.loggedInUserId.collectAsState()
 
     LaunchedEffect(loggedInUserId) {
         loggedInUserId?.let { userId ->
+           colletionViewModel.creatMyColletion(userId)
             navController.navigate("home/$userId")
         }
     }
@@ -95,7 +99,7 @@ fun FormLogin(navController: NavController,viewModel: LoginViewModel) {
                     text = "Usuario",
                     fontSize = 18.sp
                 )
-                UserTextField(name , onValueChange = { viewModel.updateName(it)})
+                UserTextField(name , onValueChange = { loginviewModel.updateName(it)})
             }
             Column(
                 Modifier.fillMaxWidth(),
@@ -106,9 +110,9 @@ fun FormLogin(navController: NavController,viewModel: LoginViewModel) {
                     text = "Contraseña",
                     fontSize = 18.sp
                 )
-                PasswordTextField(nickName, onValueChange = { viewModel.updateNickName(it)})
+                PasswordTextField(nickName, onValueChange = { loginviewModel.updateNickName(it)})
             }
-            ButtonSign{viewModel.loginUser()}
+            ButtonSign{loginviewModel.loginUser()}
         }
 
 
@@ -135,7 +139,6 @@ fun PasswordTextField(nickName: String, onValueChange : (String) -> Unit) {
         Modifier
             .width(360.dp)
             .height(60.dp),
-        visualTransformation = PasswordVisualTransformation(),
     )
 }
 
